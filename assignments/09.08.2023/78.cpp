@@ -1,25 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
 class Solution {
 public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>> ans;
-        int n = nums.size();
-        ans.push_back({});
 
-        for(int i=0; i<n; i++)
-        {
-            int s = ans.size();
-            for(int j=0; j<s; j++)
-            {
-                vector<int> temp = ans[j];
-                temp.push_back(nums[i]);
-                ans.push_back(temp);
-            }
+    vector<vector<int>> ans;
+
+    void sub(int i, vector<int>& nums, vector<int> temp){
+        if(i==nums.size()){
+            ans.push_back(temp);
+            return;
         }
-        
+
+        sub(i+1,nums,temp);
+        temp.push_back(nums[i]);
+        sub(i+1,nums,temp);
+    }
+
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> temp;
+        sub(0,nums,temp);
         return ans;
     }
 };
