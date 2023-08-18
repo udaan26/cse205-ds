@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Solution {
@@ -6,7 +6,7 @@ public:
 
     vector<vector<int>> ans;
 
-    void sub(int i, vector<int>& nums, vector<int> temp){
+    void sub(int i, vector<int>& nums, vector<int>& temp){
         if(i==nums.size()){
             ans.push_back(temp);
             return;
@@ -15,6 +15,7 @@ public:
         sub(i+1,nums,temp);
         temp.push_back(nums[i]);
         sub(i+1,nums,temp);
+        temp.pop_back();
     }
 
     vector<vector<int>> subsets(vector<int>& nums) {
